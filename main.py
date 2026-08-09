@@ -18,17 +18,17 @@ try:
     # Mencari Nilai m 
     m_prediction = m_init
 
-    # Data Prediksi yang belum di training
-    X_prediction  = np.linspace(1, 45, len(X))
-    y_prediction = fungsi_linier(X_prediction, m_prediction)
-
     # Nilai intercept atau bias awal
     intercept_or_bias = 0
+
+    # Data Prediksi yang belum di training
+    X_prediction  = np.linspace(1, 45, len(X))
+    y_prediction = fungsi_linier(X_prediction, m_prediction) + intercept_or_bias
 
     # Nilai error awal
     error = 0
 
-    print(f"Nilai Slope, Intercept dan Error yang belum di Training")
+    print(f"Nilai Slope, Intercept dan Error yang BELUM di Training")
     print(f"================================================")
     print(f"Slope\t\t: {m_prediction}")
     print(f"Intercept\t: {intercept_or_bias}")
@@ -46,11 +46,11 @@ try:
         delta_m = error / np.array(X[i], dtype=np.ndarray)
         m_prediction = m_prediction + delta_m
 
-        intercept_or_bias = y_prediction_new / fungsi_linier(np.array(X[i], dtype=np.ndarray), np.float64(m_prediction))
+        intercept_or_bias = y_prediction_new - fungsi_linier(np.array(X[i], dtype=np.ndarray), np.float64(m_prediction))
 
     # Data Prediksi yang sudah di training
-    X_prediction: np.ndarray = np.linspace(1, 45, len(X))
-    y_prediction = fungsi_linier(X_prediction, np.float64(m_prediction))
+    X_prediction = np.linspace(1, 45, len(X))
+    y_prediction = fungsi_linier(X_prediction, np.float64(m_prediction)) + intercept_or_bias
 
 
     print(f"Nilai Slope, Intercept dan Error yang SUDAH di Training")
@@ -72,7 +72,4 @@ try:
     plt.show()
 except FileNotFoundError:
     print("File tidak ditemukan")
-
-
-
 
