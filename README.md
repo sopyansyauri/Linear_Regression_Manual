@@ -5,7 +5,7 @@ Membuat Program Memprediksi Jarak dari Mobil menggunakan Model Linear Regression
 ### Membuat VirtualEnvironment
 
 ```bash
-python3 -m venv ./venv
+python3 -m venv .venv
 ```
 
 ### Aktifkan VirtualEnvironment
